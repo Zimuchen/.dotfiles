@@ -1,4 +1,4 @@
-" vim: set foldmethod=marker foldlevel=3:
+" vim: set foldmethod=marker foldlevel=1:
 " ============================================================================
 " Basic Setting {{{
 " ============================================================================
@@ -56,27 +56,31 @@ Plug 'junegunn/vim-emoji'
 " Plug 'junegunn/vim-pseudocl'
 " Plug 'junegunn/vim-slash'
 " Plug 'junegunn/vim-fnr'
-Plug 'junegunn/vim-peekaboo'
 " Plug 'junegunn/vim-journal'
-" Plug 'junegunn/seoul256.vim'
+" Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
+Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/gv.vim'       "show git commit browser
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'    "focuse mode
-" Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-Plug 'junegunn/rainbow_parentheses.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 Plug 'junegunn/vim-after-object'
 unlet! g:plug_url_format
 
 " Colors {{{
+Plug 'mhinz/vim-startify'
+Plug 'kristijanhusak/vim-hybrid-material'
 " Plug 'tomasr/molokai'
 " Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'morhetz/gruvbox'
-Plug 'yuttie/hydrangea-vim'
-Plug 'tyrannicaltoucan/vim-deep-space'
-Plug 'AlessandroYorba/Despacio'
-Plug 'cocopon/iceberg.vim'
-Plug 'w0ng/vim-hybrid'
+Plug 'junegunn/seoul256.vim'
+" Plug 'morhetz/gruvbox'
+" Plug 'yuttie/hydrangea-vim'
+" Plug 'tyrannicaltoucan/vim-deep-space'
+" Plug 'AlessandroYorba/Despacio'
+" Plug 'cocopon/iceberg.vim'
+" Plug 'w0ng/vim-hybrid'
 "}}}
 
 " Edit {{{
@@ -85,25 +89,33 @@ Plug 'tpope/vim-surround'
 " Plug 'tpope/vim-endwise'
 " Plug 'tpope/vim-commentary',        { 'on': '<Plug>Commentary' }
 Plug 'scrooloose/nerdcommenter'
-" Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
-Plug 'sjl/gundo.vim'
-nnoremap <F5> :GundoToggle<CR>
+Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'rhysd/vim-grammarous'
-Plug 'junegunn/vim-online-thesaurus'
+" Plug 'junegunn/vim-online-thesaurus'
+Plug 'jiangmiao/auto-pairs'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire' " ae, ie
+Plug 'kana/vim-textobj-line' " al, il
+Plug 'terryma/vim-expand-region'
+Plug 'rhysd/clever-f.vim'
+Plug 'easymotion/vim-easymotion'
 
-" Plug 'SirVer/ultisnips', { 'on': '#InsertEnter' }
-" Plug 'honza/vim-snippets'
 "}}}
 " Tmux
 " Plug 'tpope/vim-tbone'
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'christoomey/vim-tmux-navigator'
+if exists('$TMUX')
+    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'wellle/tmux-complete.vim'
+    Plug 'tmux-plugins/vim-tmux-focus-events'
+endif
 
 " Browsing {{{
 Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesEnable' }
 autocmd! User indentLine doautocmd indentLine Syntax
 
-" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " augroup nerd_loader
 "   autocmd!
 "   autocmd VimEnter * silent! autocmd! FileExplorer
@@ -113,69 +125,76 @@ autocmd! User indentLine doautocmd indentLine Syntax
 "         \|   execute 'autocmd! nerd_loader'
 "         \| endif
 " augroup END
-
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 "}}}
 
 " Git {{{
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
+" Plug 'tpope/vim-rhubarb'
 Plug 'mhinz/vim-signify'
 "}}}
 
 " Lint {{{
-" Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
 Plug 'w0rp/ale'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'octol/vim-cpp-enhanced-highlight' 
 "}}}
 "}}}
 
 " Zmchen {{{
-Plug 'mhinz/vim-startify'
-Plug 'kristijanhusak/vim-hybrid-material'
 " Plug 'terryma/vim-smooth-scroll'
 " Plug 'yonchu/accelerated-smooth-scroll'
 " Plug 'terryma/vim-multiple-cursors'
-Plug 'jiangmiao/auto-pairs'
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-entire' " ae, ie
-Plug 'kana/vim-textobj-line' " al, il
-Plug 'terryma/vim-expand-region'
-Plug 'rhysd/clever-f.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'SirVer/ultisnips', { 'on': [] }
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/unite-outline'
+" Plug 'Shougo/unite.vim'
+" Plug 'Shougo/unite-outline'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/vimfiler.vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'itchyny/vim-cursorword'
-Plug 'LeafCage/foldCC'
-Plug 'jalvesaq/Nvim-R'
-Plug 'Shougo/vimfiler.vim'
-Plug 'davidoc/taskpaper.vim'
-" Plug 'Valloric/YouCompleteMe', { 'on': [] }
-if !has('nvim')
-  Plug 'Shougo/neocomplete.vim'
-endif
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-endif
-" Plug 'ybian/smartim'
-Plug 'CodeFalling/fcitx-vim-osx'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'vim-latex/vim-latex'
-Plug 'itspriddle/vim-marked'
 Plug 'mileszs/ack.vim'
+Plug 'LeafCage/foldCC'
+" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'davidoc/taskpaper.vim'
+" Plug 'itspriddle/vim-marked' " Open the current Markdown buffer in Marked
+" Plug 'Valloric/YouCompleteMe', { 'on': [] }
+" if !has('nvim')
+"   Plug 'Shougo/neocomplete.vim'
+" endif
+" if has('nvim')
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" endif
+" Plug 'ybian/smartim'
+" Plug 'CodeFalling/fcitx-vim-osx'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
+" Plug 'vim-latex/vim-latex'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'lervag/vimtex', {'on_ft' : ['tex', 'bib']}
+Plug 'salsifis/vim-transpose'
 
-Plug 'roxma/nvim-completion-manager'
-Plug 'gaalcaras/ncm-R'
+Plug 'python-mode/python-mode', {'on_ft' : 'python'}
+
+if !has('nvim')
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'zchee/deoplete-jedi'
+endif
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim'
+endif
+" Plug 'Valloric/YouCompleteMe'
+Plug 'SirVer/ultisnips', { 'on': [] }
+" Plug 'SirVer/ultisnips', { 'on': '#InsertEnter' }
+Plug 'honza/vim-snippets'
+Plug 'jalvesaq/Nvim-R', { 'for' : 'r' }
 
 " Vim 8 only
-if !has('nvim')
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'rakr/vim-one'
+
 
 call plug#end()
 endif
@@ -221,10 +240,11 @@ set virtualedit=block
 set nojoinspaces
 set diffopt=filler,vertical
 set autoread
-set clipboard=unnamed
+" set clipboard=unnamed
 set foldlevelstart=99
 set grepformat=%f:%l:%c:%m,%f:%l:%m
-set completeopt=menuone,preview
+set completeopt=menu,menuone,preview
+set completeopt+=noinsert
 set nocursorline
 set nrformats=hex
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
@@ -376,6 +396,7 @@ set complete-=i
 if !has('nvim')
   silent! set ttymouse=xterm2
 endif
+
 set mouse=a
 
 " 80 chars/line
@@ -394,6 +415,7 @@ if exists('&fixeol')
   set nofixeol
 endif
 
+set t_Co=256
 if has('gui_running')
   " set guifont=Menlo:h16 columns=144 lines=40
   set guifont=Iosevka\ Extralight:h16 columns=144 lines=40
@@ -401,13 +423,13 @@ if has('gui_running')
   set background=dark
   " let g:seoul256_background = 235
   " silent! colo seoul256 "hybrid-material
-  colorscheme hybrid_material
+  " colorscheme hybrid_material
+  colorscheme one
 else
-  set t_Co=256
   if !has('nvim')
     set term=xterm-256color
     let base16colorspace=256
-    colorscheme base16-material-dark
+    " colorscheme base16-material-dark
   endif
   let g:seoul256_background = 235
   silent! colo seoul256 "hybrid-material
@@ -425,6 +447,9 @@ endif
 " ----------------------------------------------------------------------------
 " Basic mappings
 " ----------------------------------------------------------------------------
+" For terminal in Vim
+ tnoremap <F1> <C-W>N
+ tnoremap <S-Tab> <C-W><C-W>
 
 " noremap <C-F> <C-D>
 " noremap <C-B> <C-U>
@@ -435,7 +460,7 @@ endif
 " nnoremap <leader>s :update<cr>
 " nnoremap <leader>w :update<cr>
 nnoremap zs :update<cr>
-nnoremap zw :Gwrite<cr>
+nnoremap zS :Gwrite<cr>
 " Disable CTRL-A on tmux or on screen
 if $TERM =~ 'screen'
   nnoremap <C-a> <nop>
@@ -446,11 +471,13 @@ endif
 " inoremap <C-Q>     <esc>:q<cr>
 " nnoremap <C-Q>     :q<cr>
 " vnoremap <C-Q>     <esc>
-nnoremap zq :q<cr>
+nnoremap zq :bd<cr>
 nnoremap zQ :qa!<cr>
 nnoremap zl :lcd %:p:h<cr>
-nnoremap <Leader>bd : bd<cr>
-nnoremap zb : bd<cr>
+nnoremap zb :cclose<bar>lclose<cr>
+nnoremap zw :only<cr>
+" nnoremap <Leader>bd : bd<cr>
+" nnoremap zb : bd<cr>
 
 " Tag stack
 " nnoremap g[ :pop<cr>
@@ -459,8 +486,8 @@ nnoremap zb : bd<cr>
 " nnoremap <C-p> <C-i>
 
 " <F2> | NERD Tree
-" nnoremap <F2> :NERDTreeToggle<cr>
-nnoremap <F2> :VimFiler<cr>
+nnoremap <F2> :NERDTreeToggle<cr>
+" nnoremap <F2> :VimFiler<cr>
 
 " <F3> | Tagbar
 inoremap <F3> <esc>:TagbarToggle<cr>
@@ -513,34 +540,34 @@ if has('nvim')
 endif
 
 if has("gui_running")
-    set macmeta
-    " d means command key
-    " noremap <silent><c-tab> :tabprev<CR>
-    " inoremap <silent><c-tab> <ESC>:tabprev<CR>
-    " noremap <silent><d-1> <C-W>w
-    " noremap <silent><d-2> <C-W>p
-    noremap <silent><d-1> :tabn 1<cr>
-    noremap <silent><d-2> :tabn 2<cr>
-    noremap <silent><d-3> :tabn 3<cr>
-    noremap <silent><d-4> :tabn 4<cr>
-    noremap <silent><d-5> :tabn 5<cr>
-    noremap <silent><d-6> :tabn 6<cr>
-    noremap <silent><d-7> :tabn 7<cr>
-    noremap <silent><d-8> :tabn 8<cr>
-    noremap <silent><d-9> :tabn 9<cr>
-    noremap <silent><d-0> :tabn 10<cr>
-    inoremap <silent><d-1> <ESC>:tabn 1<cr>
-    inoremap <silent><d-2> <ESC>:tabn 2<cr>
-    inoremap <silent><d-3> <ESC>:tabn 3<cr>
-    inoremap <silent><d-4> <ESC>:tabn 4<cr>
-    inoremap <silent><d-5> <ESC>:tabn 5<cr>
-    inoremap <silent><d-6> <ESC>:tabn 6<cr>
-    inoremap <silent><d-7> <ESC>:tabn 7<cr>
-    inoremap <silent><d-8> <ESC>:tabn 8<cr>
-    inoremap <silent><d-9> <ESC>:tabn 9<cr>
-    inoremap <silent><d-0> <ESC>:tabn 10<cr>
-    " noremap <silent><d-o> :browse tabnew<cr>
-    " inoremap <silent><d-o> <ESC>:browse tabnew<cr>
+  set macmeta
+  " d means command key
+  " noremap <silent><c-tab> :tabprev<CR>
+  " inoremap <silent><c-tab> <ESC>:tabprev<CR>
+  " noremap <silent><d-1> <C-W>w
+  " noremap <silent><d-2> <C-W>p
+  noremap <silent><d-1> :tabn 1<cr>
+  noremap <silent><d-2> :tabn 2<cr>
+  noremap <silent><d-3> :tabn 3<cr>
+  noremap <silent><d-4> :tabn 4<cr>
+  noremap <silent><d-5> :tabn 5<cr>
+  noremap <silent><d-6> :tabn 6<cr>
+  noremap <silent><d-7> :tabn 7<cr>
+  noremap <silent><d-8> :tabn 8<cr>
+  noremap <silent><d-9> :tabn 9<cr>
+  noremap <silent><d-0> :tabn 10<cr>
+  inoremap <silent><d-1> <ESC>:tabn 1<cr>
+  inoremap <silent><d-2> <ESC>:tabn 2<cr>
+  inoremap <silent><d-3> <ESC>:tabn 3<cr>
+  inoremap <silent><d-4> <ESC>:tabn 4<cr>
+  inoremap <silent><d-5> <ESC>:tabn 5<cr>
+  inoremap <silent><d-6> <ESC>:tabn 6<cr>
+  inoremap <silent><d-7> <ESC>:tabn 7<cr>
+  inoremap <silent><d-8> <ESC>:tabn 8<cr>
+  inoremap <silent><d-9> <ESC>:tabn 9<cr>
+  inoremap <silent><d-0> <ESC>:tabn 10<cr>
+  " noremap <silent><d-o> :browse tabnew<cr>
+  " inoremap <silent><d-o> <ESC>:browse tabnew<cr>
 endif
 
 
@@ -571,6 +598,9 @@ nnoremap <tab>   <c-w>w
 nnoremap <C-h>   <c-w>h
 nnoremap <C-l>   <c-w>l
 nnoremap <S-tab> <c-w>W
+" jump list (previous, next)
+nnoremap <C-p> <C-o>
+nnoremap <C-n> <C-i>
 
 " ----------------------------------------------------------------------------
 " <tab> / <s-tab> / <c-v><tab> | super-duper-tab
@@ -686,7 +716,9 @@ nnoremap <C-b> <C-b>zz
 " ----------------------------------------------------------------------------
 " <Leader>c Close quickfix/location window
 " ----------------------------------------------------------------------------
-nnoremap <leader>c :cclose<bar>lclose<cr>
+nnoremap <leader>co :cclose<bar>lclose<cr>
+nnoremap zo :cclose<bar>lclose<cr>
+
 
 " ----------------------------------------------------------------------------
 " Readline-style key bindings in command-line (excerpt from rsi.vim)
@@ -1097,7 +1129,6 @@ xnoremap <silent> a~ g_?^```<cr>o/^```<cr>V:<c-u>nohl<cr>gv
 onoremap <silent> i~ :<C-U>execute "normal vi`"<cr>
 onoremap <silent> a~ :<C-U>execute "normal va`"<cr>
 
-
 " ----------------------------------------------------------------------------
 " Fullfill a symbol
 " ----------------------------------------------------------------------------
@@ -1117,8 +1148,7 @@ function! FillLine( str )
     endif
 endfunction
 
-map <Leader>cc :call FillLine('-')
-
+map <Leader>cl :call FillLine('-')
 " }}}
 " ============================================================================
 "}}}
@@ -1412,6 +1442,32 @@ nmap gaa ga_
 
 "}}}
 " ----------------------------------------------------------------------------
+"  rainbow_parentheses {{{
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+\	'guifgs': ['darkorange3', 'seagreen3', 'firebrick', 'royalblue3'],
+\	'ctermfgs': ['lightyellow', 'lightcyan', 'lightmagenta', 'lightblue'],
+\	'operators': '_,_',
+\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\	'separately': {
+\		'*': {},
+\		'tex': {
+\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+\		},
+\		'lisp': {
+\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+\		},
+\		'vim': {
+\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+\		},
+\		'html': {
+\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+\		},
+\		'css': 0,
+\	}
+\}
+"  }}}
+" ----------------------------------------------------------------------------
 " undotree {{{
 " ----------------------------------------------------------------------------
 let g:undotree_WindowLayout = 2
@@ -1425,93 +1481,48 @@ nnoremap U :UndotreeToggle<CR>
 " ----------------------------------------------------------------------------
 " neocomplete {{{
 " ----------------------------------------------------------------------------
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 2
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-
-function! s:my_cr_function()
-  " return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-
-" AutoComplPop like behavior.
-let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" autocmd FileType r setlocal omnifunc=NVIMR#CompleteR
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-" let g:neocomplete#sources#omni#input_patterns.r = '$'
-let g:neocomplete#sources#omni#input_patterns.r = '\$\+'
-      " \ '[[:alnum:].\\]\+'
-
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-" let g:neocomplete#force_omni_input_patterns.r = '\$'
-" let g:neocomplete#sources#omni#functions.r =
-    " \ 'rcomplete#CompleteR'
-" let g:neocomplete#same_filetypes.r = 'R, Rnw, Rmd'
-
+" Use deoplete.
+set encoding=utf-8
+let g:deoplete#enable_at_startup = 1
 set completeopt-=preview
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
+" call deoplete#custom#option({
+    " \ 'smart_case': v:true,
+    " \ 'max_list': 150,
+    " \ 'refresh_always': v:true,
+    " \ 'auto_complete_delay': 5,
+    " \ 'sources': {
+        " \ 'bib': ['ultisnips'],
+        " \ 'snippets': ['ultisnips'],
+        " \ 'tex' : ['buffer', 'dictionary', 'ultisnips', 'file', 'omni'],
+        " \ 'r' : ['buffer', 'ultisnips', 'file', 'omni']
+    " \ },
+    " \ 'omni_patterns':  {
+		" \ 'r': ['\h\w*::\w*', '\h\w*\$\w*', '\h\w*(w*'],
+    " \ },
+" \ })
 
-let g:neocomplete#fallback_mappings = ["\<C-x>\<C-n>", "\<C-x>\<C-o>"]
+call deoplete#custom#var('omni', 'input_patterns', {
+        \ 'tex' : '\\(?:'
+            \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
+            \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
+            \ . '|usepackage(\s*\[[^]]*\])?\s*\{[^}]*'
+            \ . '|documentclass(\s*\[[^]]*\])?\s*\{[^}]*'
+            \ .')',
+        \ 'gitcommit' : '((?:F|f)ix(?:es)?\s|'
+            \ . '(?:C|c)lose(?:s)?\s|(?:R|r)esolve(?:s)?\s|(?:S|s)ee\s)\S*',
+        \ 'javascript' : ['[^. *\t]\.\w*', '[A-Za-z]+'],
+    \ }
+\)
+
+" call deoplete#custom#option('omni_patterns', {
+    " \ 'r'   : ['[^. *\t]\.\w*', '\h\w*::\w*', '\h\w*\$\w*', '\h\w*\w*', '\h\w*(w*']
+		" \})
+" if !exists('g:deoplete#omni#input_patterns')
+    " let g:deoplete#omni#input_patterns = {}
+" endif
+" let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 "}}}
 " ----------------------------------------------------------------------------
@@ -1541,99 +1552,219 @@ let g:table_mode_corner="|"
 " LaTeX {{{
 " ----------------------------------------------------------------------------
 autocmd BufEnter *.tex set expandtab sw=2 ts=2 softtabstop=2
-let g:tex_flavor='latex'
-" let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_MultipleCompileFormats='pdf,bibtex,pdf'
-au Filetype tex let b:AutoPairs = {"$": "$", "(": ")", "{": "}", "[": "]"}
-au Filetype tex set linebreak
-function! CompileXeTex()
-    let oldCompileRule=g:Tex_CompileRule_pdf
-    let g:Tex_CompileRule_pdf = '/Library/TeX/texbin/xelatex -synctex=1 -shell-escape -src-specials -interaction=nonstopmode $*'
-    call Tex_RunLaTeX()
-    let g:Tex_CompileRule_pdf=oldCompileRule
-endfunction
-map <Leader>lx :<C-U>call CompileXeTex()<CR>
-" }}}
 
+" let g:tex_flavor='latex'
+" let g:Tex_DefaultTargetFormat='pdf'
+" let g:Tex_MultipleCompileFormats='pdf,bibtex,pdf'
+" au Filetype tex let b:AutoPairs = {"$": "$", "(": ")", "{": "}", "[": "]"}
+" au Filetype tex set linebreak
+" function! CompileXeTex()
+    " let oldCompileRule=g:Tex_CompileRule_pdf
+    " let g:Tex_CompileRule_pdf = '/Library/TeX/texbin/xelatex -synctex=1 -shell-escape -src-specials -interaction=nonstopmode $*'
+    " call Tex_RunLaTeX()
+    " let g:Tex_CompileRule_pdf=oldCompileRule
+" endfunction
+" map <Leader>lx :<C-U>call CompileXeTex()<CR>
+
+
+" vimtex {{{
+" Matching may become computationally intensive for complex LaTeX documents.
+" If you experience slowdowns while moving the cursor, the following option
+" is recommended to delay highlighting slightly while navigating:
+let g:signify_skip_filetype = { 'tex':1 }
+let g:vimtex_quickfix_open_on_warning = 1
+let g:tex_indent_items = 0 
+let g:vimtex_matchparen_enabled = 1
+" let g:matchup_override_vimtex = 0
+" let g:matchup_matchparen_deferred = 1
+let g:vimtex_view_method = 'skim'
+if has('nvim')
+  let g:vimtex_compiler_progname = 'nvr'
+endif
+if !has('nvim')
+  let g:vimtex_compiler_latexmk = {
+      \ 'backend' : 'jobs',
+      \ 'background' : 1,
+      \ 'build_dir' : '',
+      \ 'callback' : 1,
+      \ 'continuous' : 0,
+      \ 'executable' : 'latexmk',
+      \ 'options' : [
+      \   '-pdf',
+      \   '-verbose',
+      \   '-file-line-error',
+      \   '-synctex=1',
+      \   '-interaction=nonstopmode',
+      \ ],
+      \}
+  let g:vimtex_latexmk_options = '-pdflatex="/Library/TeX/texbin/xelatex -synctex=1 -shell-escape -src-specials -interaction=nonstopmode $*"'
+endif
+" let g:vimtex_indent_delims = {
+      " \ 'open' : ['{', '\\\@<!\\\['],
+      " \ 'close' : ['}', '\\\]'],
+      " \ 'include_modified_math' : 0,
+      " \}
+" augroup my_cm_setup
+  " autocmd!
+  " autocmd User CmSetup call cm#register_source({
+        " \ 'name' : 'vimtex',
+        " \ 'priority': 8,
+        " \ 'scoping': 1,
+        " \ 'scopes': ['tex'],
+        " \ 'abbreviation': 'tex',
+        " \ 'cm_refresh_patterns': g:vimtex#re#ncm,
+        " \ 'cm_refresh': {'omnifunc': 'vimtex#complete#omnifunc'},
+        " \ })
+" augroup END
+
+let g:vimtex_delim_toggle_mod_list = [
+  \ ['\bigl', '\bigr'],
+  \ ['\Bigl', '\Bigr'],
+  \ ['\biggl', '\biggr'],
+  \ ['\Biggl', '\Biggr'],
+  \]
+noremap <F12> :VimtexCompile<CR>
+"}}}
+" }}}
 " ----------------------------------------------------------------------------
 " Python {{{
 " ----------------------------------------------------------------------------
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
+" au BufNewFile,BufRead *.py
+    " \ set tabstop=4
+    " \ set softtabstop=4
+    " \ set shiftwidth=4
+    " \ set textwidth=79
+    " \ set expandtab
+    " \ set autoindent
+    " \ set fileformat=unix
+let g:pymode_python = 'python3'
+"}}}
+" ----------------------------------------------------------------------------
+" C++ {{{
+" ----------------------------------------------------------------------------
 
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
 
+" gutentags 搜索工程目錄的標誌，碰到這些文件/目錄名就停止向上一級目錄遞歸
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+
+" 所生成的數據文件的名稱
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 將自動生成的 tags 文件全部放入 ~/.cache/tags 目錄中，避免污染工程目錄
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+
+" 配置 ctags 的參數
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+" 檢測 ~/.cache/tags 不存在就新建
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
+
+let g:ale_linters_explicit = 1
+let g:ale_completion_delay = 500
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
+
+"}}}
 " ----------------------------------------------------------------------------
 " Nvim-R {{{
 " ----------------------------------------------------------------------------
+" let g:tagbar_type_r = {
+    " \ 'ctagstype' : 'r',
+    " \ 'kinds'     : [
+        " \ 'c:CodeChunk',
+        " \ 's:Section',
+        " \ 'f:Functions',
+        " \ 'g:Variables',
+        " \ 'v:FunctionVariables',
+    " \ ]
+" \ }
 let g:tagbar_type_r = {
     \ 'ctagstype' : 'r',
     \ 'kinds'     : [
-        \ 'c:CodeChunk',
-        \ 's:Section',
+        \ 'l:Libraries',
+        \ 's:Sources',
         \ 'f:Functions',
-        \ 'g:Variables',
-        \ 'v:FunctionVariables',
+        \ 'g:Global Variables',
     \ ]
 \ }
-
-let R_in_buffer = 0
-" let R_applescript = 1
-" let R_in_buffer = 1
-" let R_applescript = 1
-let R_tmux_split = 1
+        " \ 'v:Function Variables',
+let R_in_buffer = 1
+" let R_esc_term = 0
+" let R_tmux_split = 1
 " let R_vsplit = 1
-" let RStudio_cmd = 'open -a /Applications/RStudio.app'
-let Rstudio_cmd = 'open -a RStudio'
+" use Rstudio
+" let R_applescript = 1
+" let R_in_buffer = 0
+" let RStudio_cmd = '/Applications/RStudio.app'
+" let Rstudio_cmd = 'open -a RStudio'
 let R_objbr_w = 25
 let R_show_args = 1
-let R_args_in_stline = 1
+let R_args_in_stline = 0
 let r_syntax_folding = 0
-if has("gui_running")
-  set macmeta
-  let R_assign_map = "<M-->"
+" if has("gui_running")
+  " set macmeta
+  " let R_assign_map = "<M-->"
   " inoremap <C-S-M> %>%
-else
-  let R_assign_map = "<Esc>-"
-endif
-
+" else
+  " let R_assign_map = "<Esc>-"
+" endif
+let R_objbr_place = "LEFT"
+let R_rconsole_width = 57
+let R_min_editor_width = 18
+let R_start_libs = 'base,stats,graphics,grDevices,utils,methods,colorout'
+" “ R output is highlighted with current colorscheme
+let g:rout_follow_colorscheme = 1
+" “ R commands in R output are highlighted
+let g:Rout_more_colors = 1
 " Use Ctrl+Space to do omnicompletion:
 "if has("gui_running")
 "    inoremap <C-Space> <C-x><C-o>
 "else
 "    inoremap <Nul> <C-x><C-o>
 "endif
-if has("gui_running")
+" if has("gui_running")
   " au FileType r vmap <buffer> <D-CR> :call SendCmdToRstudio()<return>| nmap <buffer> <D-CR> :call SendCmdToRstudio()<return>
-  au FileType r nmap <buffer> <D-CR> :call SendLineToR("down")<CR>0
-  au FileType r imap <buffer> <D-CR> <Esc>:call SendLineToR("down")<CR>a
-  au FileType r vmap <buffer> <D-CR> :call SendSelectionToR("slient", "down")<CR>
+  " au FileType r nmap <buffer> <D-CR> :call SendLineToR("down")<CR>0
+  " au FileType r imap <buffer> <D-CR> <Esc>:call SendLineToR("down")<CR>a
+  " au FileType r vmap <buffer> <D-CR> :call SendSelectionToR("slient", "down")<CR>
   " au FileType r nmap <buffer> <D-CR> :call SendCmdToSafari()<CR>0
   " au FileType r imap <buffer> <D-CR><Esc>:call SendCmdToSafari()<CR>
   " au FileType r vmap <buffer> <D-CR>:call SendCmdToSafari()<CR>
   " au FileType r vmap <buffer> <Esc>o :call SendSelectionToR("echo","down")<CR>
-else
-  au FileType r nmap <buffer> <Esc>o :call SendLineToR("down")<CR>0
-  au FileType r imap <buffer> <Esc>o <Esc>:call SendLineToR("down")<CR>a
-  au FileType r vmap <buffer> <Esc>o :call SendSelectionToR("slient", "down")<CR>0
+" else
+  " au FileType r nmap <buffer> <Esc>o :call SendLineToR("down")<CR>0
+  " au FileType r imap <buffer> <Esc>o <Esc>:call SendLineToR("down")<CR>a
+  " au FileType r vmap <buffer> <Esc>o :call SendSelectionToR("slient", "down")<CR>0
   " au FileType r nmap <buffer> <Esc>o :call SendCmdToSafari()<CR>0
   " au FileType r imap <buffer> <Esc>o <Esc>:call SendCmdToSafari()<CR>
   " au FileType r vmap <buffer> <Esc>o :call SendCmdToSafari()<CR>
   " au FileType r vmap <buffer> <Esc>o :call SendSelectionToR("echo","down")<CR>
-endif
+" endif
+"
+" au FileType r imap <buffer> <C-D> <C-X><C-O>
 
-au FileType r imap <buffer> <C-D> <C-X><C-O>
 au FileType rbrowser setlocal norelativenumber nonumber " | :vertical resize 20
-
 au FileType r setlocal ts=2 sts=2 sw=2
+au FileType r set foldmethod=syntax foldlevel=1
 
-au FileType r nnoremap <buffer> z[  :<C-u>call <SID>put_foldmarkerR(0)<CR>
-au FileType r nnoremap <buffer> z]  :<C-u>call <SID>put_foldmarkerR(1)<CR>
+" au FileType r nnoremap <buffer> z[  :<C-u>call <SID>put_foldmarkerR(0)<CR>
+" au FileType r nnoremap <buffer> z]  :<C-u>call <SID>put_foldmarkerR(1)<CR>
 
 function! s:put_foldmarkerR(foldclose_p)
   let crrstr = getline('.')
@@ -1661,6 +1792,12 @@ function! SendCmdToSafari(...)
     return 1
 endfunction
 "}}}
+" ============================================================================
+" ctrlp {{{
+" ============================================================================
+" let g:ctrlp_by_filename = 1
+" let g:ctrlp_types = ['mru', 'buf', 'fil']
+" }}}
 " ============================================================================
 " FZF {{{
 " ============================================================================
@@ -1704,9 +1841,9 @@ if has('nvim') || has('gui_running')
 endif
 
 " Hide statusline of terminal buffer
-autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+" autocmd! FileType fzf
+" autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  " \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -1723,24 +1860,25 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" command! -bang -nargs=? -complete=dir Files
+  " \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " let g:fzf_files_options =
   " \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 " let g:fzf_layout = { 'down': '~40%'  }
 
-
-nnoremap <silent> <Leader>ff       :Files<CR>
+nnoremap <silent> <Leader>ff :Files<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
 " nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
 " nnoremap <silent> <Leader>C        :Colors<CR>
-nnoremap <silent> <Leader>bb       :Buffers<CR>
+" nnoremap <silent> <Leader>fb       :Buffers<CR>
 " nnoremap <silent> <Leader>ag       :Ag <C-R><C-W><CR>
-nnoremap <silent> <Leader>fl       :Ag <CR>
+nnoremap <silent> <Leader>fl       :BLines <CR>
 nnoremap <silent> <Leader>fw       :Ag <C-R><C-W><CR>
 " nnoremap <silent> <Leader>AG       :Ag <C-R><C-A><CR>
 " xnoremap <silent> <Leader>ag       y:Ag <C-R>"<CR>
 nnoremap <silent> <Leader>fm       :Marks<CR>
+nnoremap <silent> <Leader>fh       :History<CR>
 " nnoremap <silent> q: :History:<CR>
 " nnoremap <silent> q/ :History/<CR>
 " inoremap <expr> <c-x><c-t> fzf#complete('tmuxwords.rb --all-but-current --scroll 500 --min 5')
@@ -1827,7 +1965,7 @@ command! -nargs=* Ag call fzf#run({
 \ 'down':    '50%'
 \ })
 " }}}
-"=============================================================================
+" =============================================================================
 " Unite {{{
 "===============================================================================
 " TODO Slowly phase out unite and replace by fzf
@@ -1853,16 +1991,16 @@ command! -nargs=* Ag call fzf#run({
       " \ ], '\|'))
 
 " Map space to the prefix for Unite
-nnoremap [unite] <Nop>
-nmap , [unite]
+" nnoremap [unite] <Nop>
+" nmap , [unite]
 
 " General fuzzy search
-nnoremap <silent> <C-p> :<C-u>Unite
-      \ -buffer-name=files buffer file_mru bookmark<CR>
-
-nnoremap <silent> [unite]me :<C-u>Unite -silent output:message<CR>
+" nnoremap <silent> <C-p> :<C-u>Unite
+      " \ -buffer-name=files buffer file_mru bookmark<CR>
+"
+" nnoremap <silent> [unite]me :<C-u>Unite -silent output:message<CR>
 " Quick registers
-nnoremap <silent> [unite]mr :<C-u>Unite -buffer-name=register register<CR>
+" nnoremap <silent> [unite]mr :<C-u>Unite -buffer-name=register register<CR>
 
 " nnoremap <silent> [unite]mb :<C-u>Unite -buffer-name=buffers file_mru buffer<CR>
 " Quick buffer and mru
@@ -1871,7 +2009,7 @@ nnoremap <silent> [unite]mr :<C-u>Unite -buffer-name=register register<CR>
 " nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<CR>
 
 " Quick outline
-nnoremap <silent> [unite]mo :<C-u>Unite -buffer-name=outline -vertical outline<CR>
+" nnoremap <silent> [unite]mo :<C-u>Unite -buffer-name=outline -vertical outline<CR>
 
 " Quick sessions (projects)
 " nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=sessions session<CR>
@@ -1900,7 +2038,7 @@ nnoremap <silent> [unite]mo :<C-u>Unite -buffer-name=outline -vertical outline<C
 " nnoremap <silent> [unite]l :<C-u>UniteWithCursorWord -buffer-name=search_file line<CR>
 
 " Quick line
-nnoremap <silent> [unite]fs :<C-u>Unite -buffer-name=search_file line<CR>
+" nnoremap <silent> [unite]fs :<C-u>Unite -buffer-name=search_file line<CR>
 
 " Quick MRU search
 " nnoremap <silent> [unite]m :<C-u>Unite -buffer-name=mru file_mru<CR>
@@ -1968,9 +2106,9 @@ nnoremap <silent> [unite]fs :<C-u>Unite -buffer-name=search_file line<CR>
 " endfunction
 
 " Start in insert mode
-let g:unite_enable_start_insert = 1
+" let g:unite_enable_start_insert = 1
 
-let g:unite_data_directory = "~/.unite"
+" let g:unite_data_directory = "~/.unite"
 
 " Enable short source name in window
 " let g:unite_enable_short_source_names = 1
@@ -1979,17 +2117,17 @@ let g:unite_data_directory = "~/.unite"
 " let g:unite_source_history_yank_enable = 1
 
 " Open in bottom right
-let g:unite_split_rule = "botright"
+" let g:unite_split_rule = "botright"
 
 " Shorten the default update date of 500ms
-let g:unite_update_time = 200
+" let g:unite_update_time = 200
 
-let g:unite_source_file_mru_limit = 1000
-let g:unite_cursor_line_highlight = 'TabLineSel'
+" let g:unite_source_file_mru_limit = 1000
+" let g:unite_cursor_line_highlight = 'TabLineSel'
 " let g:unite_abbr_highlight = 'TabLine'
 
-let g:unite_source_file_mru_filename_format = ':~:.'
-let g:unite_source_file_mru_time_format = ''
+" let g:unite_source_file_mru_filename_format = ':~:.'
+" let g:unite_source_file_mru_time_format = ''
 
 " For ack.
 " if executable('ack-grep')
@@ -2001,14 +2139,14 @@ let g:unite_source_file_mru_time_format = ''
   " let g:unite_source_grep_default_opts = '-i --no-heading --no-color -a -H'
   " let g:unite_source_grep_recursive_opt = ''
 " elseif executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts =
-        \ '-i --vimgrep --hidden --ignore ' .
-        \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-  let g:unite_source_grep_recursive_opt = ''
+  " let g:unite_source_grep_command = 'ag'
+  " let g:unite_source_grep_default_opts =
+        " \ '-i --vimgrep --hidden --ignore ' .
+        " \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+  " let g:unite_source_grep_recursive_opt = ''
 " endif
-
-let g:unite_source_rec_max_cache_files = 99999
+"
+" let g:unite_source_rec_max_cache_files = 99999
 "}}}
 " ----------------------------------------------------------------------------
 " Incsearch {{{
@@ -2082,6 +2220,15 @@ endf
 "}}}
 " ============================================================================
 " AUTOCMD {{{
+augroup json_autocmd 
+  autocmd! 
+  autocmd FileType json set autoindent 
+  autocmd FileType json set formatoptions=tcq2l 
+  autocmd FileType json set textwidth=78 shiftwidth=2 
+  autocmd FileType json set softtabstop=2 tabstop=8 
+  autocmd FileType json set expandtab 
+  autocmd FileType json set foldmethod=syntax 
+augroup END
 " {{{
 " ============================================================================
 augroup vimrc

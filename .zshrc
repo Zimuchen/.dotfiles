@@ -94,9 +94,9 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
-Pdf(){
-nohup mupdf-x11 $1 >& /dev/null &}
-alias pdf="Pdf"
+# Pdf(){
+# nohup mupdf-x11 $1 >& /dev/null &}
+# alias pdf="Pdf"
 
 #source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -120,9 +120,10 @@ unalias z
 unalias f
 unalias v
 unalias o
+unalias p
 
 f() {
-  find * -type f | fzf > selected
+  file="$(find * -type f | fzf -1 -0 --no-sort)" && open "${file}" || return 1
   }
 
 z() {
@@ -139,6 +140,44 @@ v() {
   local file
     file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vim "${file}" || return 1
 }
+
+p () {
+    local DIR open
+    declare -A already
+    DIR="${HOME}/.cache/pdftotext"
+    mkdir -p "${DIR}"
+    if [ "$(uname)" = "Darwin" ]; then
+        open=open
+    else
+        open="gio open"
+    fi
+
+    {
+    ag -g ".pdf$"; # fast, without pdftotext
+    ag -g ".pdf$" \
+    | while read -r FILE; do
+        local EXPIRY HASH CACHE
+        HASH=$(md5sum "$FILE" | cut -c 1-32)
+        # Remove duplicates (file that has same hash as already seen file)
+        [ ${already[$HASH]+abc} ] && continue # see https://stackoverflow.com/a/13221491
+        already[$HASH]=$HASH
+        EXPIRY=$(( 86400 + $RANDOM * 20 )) # 1 day (86400 seconds) plus some random
+        CMD="pdftotext -f 1 -l 1 '$FILE' - 2>/dev/null | tr \"\n\" \"_\" "
+        CACHE="$DIR/$HASH"
+        test -f "${CACHE}" && [ $(expr $(date +%s) - $(date -r "$CACHE" +%s)) -le $EXPIRY ] || eval "$CMD" > "${CACHE}"
+        echo -e "$FILE\t$(cat ${CACHE})"
+    done
+    } | fzf -e  -d '\t' \
+        --preview-window up:75% \
+        --preview '
+                v=$(echo {q} | tr " " "|");
+                echo {1} | grep -E "^|$v" -i --color=always;
+                pdftotext -f 1 -l 1 {1} - | grep -E "^|$v" -i --color=always' \
+        | awk 'BEGIN {FS="\t"; OFS="\t"}; {print "\""$1"\""}' \
+        | xargs $open > /dev/null 2> /dev/null
+}
+
+
 
 # grep --line-buffered --color=never -r "" * | fzf
 
@@ -159,21 +198,29 @@ export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 
 #export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 
-function starts() {
+# function starts() {
     # export {HTTP,HTTPS,FTP}_PROXY="http://127.0.0.1:3128" 也可以設置http代理
     # export ALL_PROXY=socks5://127.0.0.1:1080
     # export ALL_PROXY=socks5://127.0.0.1:1087
-    export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152
-    echo "DONE"
-}
+    # export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152
+    # echo "DONE"
+# }
     
-function unsets() {
+# function unsets() {
  # unset {HTTP,HTTPS,FTP}_PROXY
-    unset ALL_PROXY
-    echo "DONE"
-}
+    # unset ALL_PROXY
+    # echo "DONE"
+# }
 # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 # export HOMEBREW_BOTTLE_DOMAIN=http://7xkcej.dl1.z0.glb.clouddn.com
 # Base16 Shell
 BASE16_SHELL="$HOME/.vim/bundle/vim-hybrid-material/base16-material/base16-material.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# export PATH="/usr/local/opt/llvm/bin:$PATH"
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# export PATH=/usr/local/miniconda3/bin:"$PATH"
+export PATH=/Developer/NVIDIA/CUDA-9.2/bin${PATH:+:${PATH}}
+export PATH="$PATH":~/.local/bin/
+export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-9.2/lib${DYLD_LIBRARY_PATH:+:${DYLD_LIBRARY_PATH}}
+# eval "$(pyenv init -)"
